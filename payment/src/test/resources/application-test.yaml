@@ -1,0 +1,6 @@
+tracing:
+  jaeger:
+    enabled: false
+coherence:
+  data:
+    payments:

@@ -1,0 +1,38 @@
+#
+# Copyright (c) 2020 Oracle and/or its affiliates.
+#
+# Licensed under the Universal Permissive License v 1.0 as shown at
+# http://oss.oracle.com/licenses/upl.
+#
+apiVersion: coherence.oracle.com/v1
+kind: Coherence
+metadata:
+  name: payment
+spec:
+#  cluster: SockShop
+  role: Payment
+  replicas: 1
+  image: ghcr.io/coherence-sockshop-micronaut/payment:1.0
+  imagePullPolicy: Always
+  env:
+    - name: TRACING_HOST
+      value: "jaeger-collector"
+    - name: JAEGER_SAMPLER_TYPE
+      value: "const"
+    - name: JAEGER_SAMPLER_PARAM
+      value: "1"
+  application:
+    main: io.micronaut.examples.sockshop.payment.Application
+  jvm:
+    memory:
+      heapSize: 2g
+    args:
+      - "-Dcoherence.micrometer.bind.to.global=true"
+  ports:
+    - name: http
+      port: 8080
+      service:
+        name: payment
+        port: 80
+      serviceMonitor:
+        enabled: true

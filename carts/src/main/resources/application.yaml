@@ -1,0 +1,40 @@
+#
+# Copyright (c) 2021 Oracle and/or its affiliates.
+#
+# Licensed under the Universal Permissive License v 1.0 as shown at
+# http://oss.oracle.com/licenses/upl.
+
+micronaut:
+  server:
+    cors:
+      enabled: true
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+  metrics:
+    enabled: true
+    export:
+      prometheus:
+        enabled: true
+        step: PT15S
+        descriptions: true
+endpoints:
+  prometheus:
+    sensitive: false
+tracing:
+  jaeger:
+    enabled: true
+    sampler:
+      probability: 1
+    sender:
+      agentHost: jaeger-agent
+      agentPort: 5775
+coherence:
+  topic:
+    enabled: false
+  proxy:
+    enabled: false
+  data:
+    carts:
