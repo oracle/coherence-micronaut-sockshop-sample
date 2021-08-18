@@ -14,32 +14,32 @@ The service exposes REST API on port 8080.
 
 ## Building the service
 
-In order to build project and create Docker images for the service, simply run the 
+In order to build project and create container images for the service, simply run the 
 following commands:
 
 ```bash
 $ mvn clean install
-$ mvn package -Pdocker -DskipTests
+$ mvn package -Pcontainer -DskipTests
 ``` 
 
 The first command will build project, run unit and integration tests, and install the
-artifacts that need to be included into the Docker images into the local Maven repo.
+artifacts that need to be included into the container images into the local Maven repo.
 
 The second command will then package those artifacts, and all of their dependencies, into
-the local Docker image.
+the local container image.
 
-You can then manually push generated image to a Docker repository of your choice in order
+You can then manually push generated image to a container repository of your choice in order
 to make it available to other environments.
 
-Alternatively, you can build and push the image directly to a remote Docker repository by
+Alternatively, you can build and push the image directly to a remote container repository by
 running the following command instead:
 
 ```bash
-$ mvn package -Pdocker -DskipTests -Ddocker.repo=<your_docker_repo> -Djib.goal=build
+$ mvn package -Pcontainer -DskipTests -Dcontainer.repo=<your_container_repo> -Djib.goal=build
 ```
 
-You should replace `<your_docker_repo>` in the command above with the name of the 
-Docker repository that you can push images to.
+You should replace `<your_container_repo>` in the command above with the name of the 
+container repository that you can push images to.
 
 ## Running the service
 

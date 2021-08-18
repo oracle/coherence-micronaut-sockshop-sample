@@ -1,8 +1,8 @@
 /*
- * Copyright (c) 2020, 2021 Oracle and/or its affiliates.
+ * Copyright (c) 2021 Oracle and/or its affiliates.
  *
  * Licensed under the Universal Permissive License v 1.0 as shown at
- * http://oss.oracle.com/licenses/upl.
+ * https://oss.oracle.com/licenses/upl.
  */
 
 package io.micronaut.examples.sockshop.users;
@@ -46,7 +46,6 @@ public class CustomerResourceTest {
         user.addCard(new Card("1234123412341234", "12/19", "123"));
         user.addAddress(new Address("123", "Main St", "Springfield", "12123", "USA"));
         users.register(user);
-    System.out.println("");
     }
 
     protected UserRepository getUserRepository() {
