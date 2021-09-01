@@ -26,13 +26,17 @@ spec:
   jvm:
     memory:
       heapSize: 2g
-    args:
-      - "-Dcoherence.micrometer.bind.to.global=true"
+  coherence:
+    metrics:
+      enabled: true
   ports:
     - name: http
       port: 8080
       service:
         name: payment
         port: 80
+      serviceMonitor:
+        enabled: true
+    - name: metrics
       serviceMonitor:
         enabled: true
