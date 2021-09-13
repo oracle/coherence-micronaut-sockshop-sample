@@ -26,9 +26,9 @@
         <release.version>11</release.version>
         <micronaut.runtime>netty</micronaut.runtime>
         <exec.mainClass>io.micronaut.examples.sockshop.shipping.Application</exec.mainClass>
-        <container.repo>ghcr.io/coherence-sockshop-micronaut</container.repo>
+        <container.repo>ghcr.io/oracle/coherence-micronaut-sockshop</container.repo>
         <coherence.groupId>com.oracle.coherence.ce</coherence.groupId>
-        <coherence.version>21.06</coherence.version>
+        <coherence.version>21.06.1</coherence.version>
         <version.lib.lombok>1.18.18</version.lib.lombok>
         <version.lib.hamcrest>2.2</version.lib.hamcrest>
         <version.lib.rest-assured>4.3.3</version.lib.rest-assured>
@@ -289,7 +289,7 @@
                                 </image>
                             </from>
                             <to>
-                                <image>${container.repo}/${project.artifactId}</image>
+                                <image>${container.repo}-${project.artifactId}</image>
                                 <tags>
                                     <tag>${project.version}</tag>
                                 </tags>
