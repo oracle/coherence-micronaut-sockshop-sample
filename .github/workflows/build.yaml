@@ -35,15 +35,15 @@ jobs:
       run: mvn -B install --file pom.xml -s .github/maven/settings.xml -DenableAssertions=false
     - name: Push container images
       env:
-        REGISTRY_USER: ${{ secrets.RegistryUser }}
-        REGISTRY_PASSWORD: ${{ secrets.RegistryPassword }}
+        REGISTRY_USER: ${{ github.actor }}
+        REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
       run: |
         echo $REGISTRY_PASSWORD | docker login ghcr.io -u $REGISTRY_USER --password-stdin
         mvn package --file pom.xml -s .github/maven/settings.xml -Pcontainer -DenableAssertions=false -DskipTests
-        docker push ghcr.io/coherence-sockshop-micronaut/carts:1.0
-        docker push ghcr.io/coherence-sockshop-micronaut/catalog:1.0
-        docker push ghcr.io/coherence-sockshop-micronaut/orders:1.0
-        docker push ghcr.io/coherence-sockshop-micronaut/payment:1.0
-        docker push ghcr.io/coherence-sockshop-micronaut/shipping:1.0
-        docker push ghcr.io/coherence-sockshop-micronaut/users:1.0
+        docker push ghcr.io/oracle/coherence-micronaut-sockshop-carts:1.0
+        docker push ghcr.io/oracle/coherence-micronaut-sockshop-catalog:1.0
+        docker push ghcr.io/oracle/coherence-micronaut-sockshop-orders:1.0
+        docker push ghcr.io/oracle/coherence-micronaut-sockshop-payment:1.0
+        docker push ghcr.io/oracle/coherence-micronaut-sockshop-shipping:1.0
+        docker push ghcr.io/oracle/coherence-micronaut-sockshop-users:1.0
       if: github.event_name == 'push'
