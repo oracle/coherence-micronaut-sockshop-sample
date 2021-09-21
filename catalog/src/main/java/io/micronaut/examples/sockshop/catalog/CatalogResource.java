@@ -7,8 +7,6 @@
 
 package io.micronaut.examples.sockshop.catalog;
 
-import edu.umd.cs.findbugs.annotations.Nullable;
-
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.MediaType;
@@ -19,9 +17,9 @@ import io.micronaut.tracing.annotation.NewSpan;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
+import javax.annotation.Nullable;
 import javax.inject.Inject;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 

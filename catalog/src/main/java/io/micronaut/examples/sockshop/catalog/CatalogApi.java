@@ -7,8 +7,6 @@
 
 package io.micronaut.examples.sockshop.catalog;
 
-import edu.umd.cs.findbugs.annotations.Nullable;
-
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Get;
@@ -21,6 +19,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
+import javax.annotation.Nullable;
 import java.util.Collection;
 
 import static io.micronaut.http.MediaType.APPLICATION_JSON;
@@ -47,6 +46,7 @@ public interface CatalogApi {
     CatalogResource.Count getSockCount(@Parameter(description = "tag identifiers")
                                        @Nullable @QueryValue("tags") String tags);
 
+    @SuppressWarnings("rawtypes")
     @Get("/{id}")
     @Produces(APPLICATION_JSON)
     @Operation(summary = "Return socks for the specified sock identifier")
@@ -57,6 +57,7 @@ public interface CatalogApi {
     HttpResponse getSock(@Parameter(description = "sock identifier")
                          @PathVariable("id") String sockId);
 
+    @SuppressWarnings("rawtypes")
     @Get("/images/{image}")
     @Produces(MediaType.IMAGE_JPEG)
     @Operation(summary = "Return the sock images for the specified image identifer")
