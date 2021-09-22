@@ -1,17 +1,20 @@
-# Micronaut Sock Shop
+# Coherence Micronaut Sock Shop
 
-This project is an implementation of the microservices based application
-using [Micronaut Framework](https://micronaut.io/).
+This project is an implementation of a stateful, microservices based application that
+uses [Oracle Coherence CE](https://coherence.community/) as a scalable embedded data
+store, and [Micronaut Framework](https://micronaut.io/) as application
+framework.
 
-The application is an online store that sells, well, socks, and is based
-on the canonical [SockShop Microservices Demo](https://microservices-demo.github.io)
+The application is an online store that sells socks, and is based
+on the [SockShop Microservices Demo](https://microservices-demo.github.io)
 originally written and published under Apache 2.0 license by [Weaveworks](https://go.weave.works/socks).
 
 You can see a working demo of the original application [here](http://socks.weave.works/).
 
 This demo still uses the original front end implementation provided by Weaveworks,
-but all back end services have been re-implemented from scratch to use Micronaut
-and showcase its features and best practices.
+but all back end services have been re-implemented from scratch using Micronaut Framework 
+and Oracle Coherence, in order to showcase many features of the [Coherence Micronaut](https://github.com/micronaut-projects/micronaut-coherence) 
+integration.
 
 # Table of Contents
 
