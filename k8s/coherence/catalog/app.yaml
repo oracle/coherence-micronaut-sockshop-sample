@@ -22,7 +22,7 @@ spec:
     - name: JAEGER_SAMPLER_PARAM
       value: "1"
   application:
-    main: io.micronaut.examples.sockshop.catalog.Application
+    main: com.oracle.coherence.examples.sockshop.micronaut.catalog.Application
   jvm:
     memory:
       heapSize: 2g

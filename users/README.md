@@ -4,10 +4,10 @@ The Users Service covers user account storage, provide user login, register and
 retrieval for user, cards and addresses.
 
 It contains service implementation, including
-[domain model](./src/main/java/io/micronaut/examples/sockshop/users/User.java),
-[REST API](./src/main/java/io/micronaut/examples/sockshop/users/UserResource.java),
-as well as the [data repository abstraction](./src/main/java/io/micronaut/examples/sockshop/users/UserRepository.java)
-and its [Coherence](https://coherence.java.net/) [implementation](src/main/java/io/micronaut/examples/sockshop/users/CoherenceUserRepository.java).
+[domain model](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/users/User.java),
+[REST API](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/users/UserResource.java),
+as well as the [data repository abstraction](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/users/UserRepository.java)
+and its [Coherence](https://coherence.java.net/) [implementation](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/users/CoherenceUserRepository.java).
 
 ## API
 

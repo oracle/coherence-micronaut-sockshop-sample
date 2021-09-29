@@ -25,13 +25,14 @@
         <jdk.version>11</jdk.version>
         <release.version>11</release.version>
         <micronaut.runtime>netty</micronaut.runtime>
-        <exec.mainClass>io.micronaut.examples.sockshop.carts.Application</exec.mainClass>
+        <exec.mainClass>com.oracle.coherence.examples.sockshop.micronaut.carts.Application</exec.mainClass>
         <container.repo>ghcr.io/oracle/coherence-micronaut-sockshop</container.repo>
         <coherence.groupId>com.oracle.coherence.ce</coherence.groupId>
-        <coherence.version>21.06.1</coherence.version>
+        <coherence.version>21.06.2</coherence.version>
         <version.lib.lombok>1.18.20</version.lib.lombok>
         <version.lib.hamcrest>2.2</version.lib.hamcrest>
         <version.lib.rest-assured>4.4.0</version.lib.rest-assured>
+        <version.lib.junit5>5.7.1</version.lib.junit5>
         <slf4j.version>1.7.32</slf4j.version>
 
         <!-- micronaut-parent overrides -->
@@ -59,9 +60,9 @@
         </repository>
     </repositories>
 
-    <groupId>io.micronaut.examples.sockshop</groupId>
+    <groupId>com.oracle.coherence.examples.sockshop.micronaut</groupId>
     <artifactId>carts</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
 
     <dependencies>
         <dependency>
@@ -142,11 +143,6 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.oracle.coherence.ce</groupId>
-            <artifactId>coherence-metrics</artifactId>
-            <version>${coherence.version}</version>
-        </dependency>
-        <dependency>
             <groupId>io.micronaut.micrometer</groupId>
             <artifactId>micronaut-micrometer-registry-prometheus</artifactId>
         </dependency>
@@ -163,13 +159,13 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.8.0</version>
+            <version>${version.lib.junit5}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.8.0</version>
+            <version>${version.lib.junit5}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

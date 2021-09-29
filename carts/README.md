@@ -1,10 +1,10 @@
 # Shopping Cart Service
 
 The Shopping Cart Service contains the service implementation, including the
-[domain model](./src/main/java/io/micronaut/examples/sockshop/carts/Cart.java),
-[REST API](./src/main/java/io/micronaut/examples/sockshop/carts/CartResource.java), as well as the
-[data repository abstraction](./src/main/java/io/micronaut/examples/sockshop/carts/CartRepository.java)
-and its [Coherence](https://coherence.java.net/) [implementation](src/main/java/io/micronaut/examples/sockshop/carts/CoherenceCartRepository.java).
+[domain model](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/carts/Cart.java),
+[REST API](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/carts/CartResource.java), as well as the
+[data repository abstraction](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/carts/CartRepository.java)
+and its [Coherence](https://coherence.java.net/) [implementation](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/carts/CoherenceCartRepository.java).
 
 ## API
 

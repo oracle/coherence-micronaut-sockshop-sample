@@ -1,10 +1,10 @@
 # Product Catalog Service
 
 The Product Catalog Service contains service implementation, including the
-[domain model](./src/main/java/io/micronaut/examples/sockshop/catalog/Sock.java),
-[REST API](./src/main/java/io/micronaut/examples/sockshop/catalog/CatalogResource.java), as well as the
-[data repository abstraction](./src/main/java/io/micronaut/examples/sockshop/catalog/CatalogRepository.java)
-and its [Coherence](https://coherence.java.net/) [implementation](src/main/java/io/micronaut/examples/sockshop/catalog/CoherenceCatalogRepository.java).
+[domain model](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/catalog/Sock.java),
+[REST API](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/catalog/CatalogResource.java), as well as the
+[data repository abstraction](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/catalog/CatalogRepository.java)
+and its [Coherence](https://coherence.java.net/) [implementation](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/catalog/CoherenceCatalogRepository.java).
 
 ## API
 

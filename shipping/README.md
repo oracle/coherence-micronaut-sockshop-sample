@@ -1,10 +1,10 @@
 # Shipping Service
 
 The Shipping Service contains service implementation, including the
-[domain model](./src/main/java/io/micronaut/examples/sockshop/shipping/Shipment.java),
-[REST API](./src/main/java/io/micronaut/examples/sockshop/shipping/ShippingResource.java), as well as the
-[data repository abstraction](./src/main/java/io/micronaut/examples/sockshop/shipping/ShipmentRepository.java)
-and its [Coherence](https://coherence.java.net/) [implementation](./src/main/java/io/micronaut/examples/sockshop/shipping/CoherenceShipmentRepository.java).
+[domain model](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/shipping/Shipment.java),
+[REST API](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/shipping/ShippingResource.java), as well as the
+[data repository abstraction](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/shipping/ShipmentRepository.java)
+and its [Coherence](https://coherence.java.net/) [implementation](src/main/java/com/oracle/coherence/examples/sockshop/micronaut/shipping/CoherenceShipmentRepository.java).
 
 ## API
 
