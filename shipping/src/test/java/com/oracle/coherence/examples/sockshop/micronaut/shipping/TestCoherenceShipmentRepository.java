@@ -10,7 +10,7 @@ package com.oracle.coherence.examples.sockshop.micronaut.shipping;
 import io.micronaut.coherence.data.annotation.CoherenceRepository;
 import io.micronaut.context.annotation.Primary;
 
-@CoherenceRepository("test")
+@CoherenceRepository("shipments")
 @Primary
 public abstract class TestCoherenceShipmentRepository extends CoherenceShipmentRepository implements TestShipmentRepository {
     @Override
