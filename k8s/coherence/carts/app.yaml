@@ -36,6 +36,7 @@ spec:
         port: 80
       serviceMonitor:
         enabled: true
+        path: /prometheus
     - name: metrics
       serviceMonitor:
         enabled: true
