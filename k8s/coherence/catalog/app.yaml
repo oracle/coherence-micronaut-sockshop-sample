@@ -20,6 +20,8 @@ spec:
       value: "const"
     - name: JAEGER_SAMPLER_PARAM
       value: "1"
+    - name: COHERENCE_SERVICE_NAME
+      value: "Catalog"
   application:
     main: com.oracle.coherence.examples.sockshop.micronaut.catalog.Application
   jvm:
