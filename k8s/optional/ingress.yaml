@@ -13,7 +13,8 @@ spec:
   - host: ${SOCKSHOP_BACKEND:=coherence}.${SOCKSHOP_DOMAIN:=sockshop.micronaut.io}
     http:
       paths:
-      - backend:
+      - pathType: ImplementationSpecific
+        backend:
           service:
             name: front-end
             port:
@@ -21,7 +22,8 @@ spec:
   - host: jaeger.${SOCKSHOP_BACKEND:=coherence}.${SOCKSHOP_DOMAIN:=sockshop.micronaut.io}
     http:
       paths:
-      - backend:
+      - pathType: ImplementationSpecific
+        backend:
           service:
             name: jaeger-query
             port:
@@ -30,61 +32,70 @@ spec:
     http:
       paths:
         - path: /carts
+          pathType: ImplementationSpecific
           backend:
             service:
               name: carts
               port:
                 number: 80
         - path: /catalogue
+          pathType: ImplementationSpecific
           backend:
             service:
               name: catalogue
               port:
                 number: 80
         - path: /orders
+          pathType: ImplementationSpecific
           backend:
             service:
               name: orders
               port:
-                name: http
                 number: 80
         - path: /paymentAuth
+          pathType: ImplementationSpecific
           backend:
             service:
               name: payment-http
               port:
                 number: 80
         - path: /shipping
+          pathType: ImplementationSpecific
           backend:
             service:
               name: shipping-http
               port:
                 number: 80
         - path: /login
+          pathType: ImplementationSpecific
           backend:
             service:
               name: user
               port:
                 number: 80
         - path: /register
+          pathType: ImplementationSpecific
           backend:
             service:
               name: user
               port:
                 number: 80
         - path: /customers
+          pathType: ImplementationSpecific
           backend:
             service:
               name: user
               port:
                 number: 80
         - path: /addresses
+          pathType: ImplementationSpecific
           backend:
             service:
               name: user
               port:
                 number: 80
         - path: /cards
+          pathType: ImplementationSpecific
           backend:
             service:
               name: user
@@ -103,42 +114,49 @@ spec:
     http:
       paths:
         - path: /swagger(/|$)(.*)
+          pathType: ImplementationSpecific
           backend:
             service:
               name: swagger
               port:
                 number: 80
         - path: /carts(/|$)(.*)
+          pathType: ImplementationSpecific
           backend:
             service:
               name: carts
               port:
                 number: 80
         - path: /catalogue(/|$)(.*)
+          pathType: ImplementationSpecific
           backend:
             service:
               name: catalogue
               port:
                 number: 80
         - path: /orders(/|$)(.*)
+          pathType: ImplementationSpecific
           backend:
             service:
               name: orders
               port:
                 number: 80
         - path: /payments(/|$)(.*)
+          pathType: ImplementationSpecific
           backend:
             service:
               name: payment-http
               port:
                 number: 80
         - path: /shipping(/|$)(.*)
+          pathType: ImplementationSpecific
           backend:
             service:
               name: shipping-http
               port:
                 number: 80
         - path: /users(/|$)(.*)
+          pathType: ImplementationSpecific
           backend:
             service:
               name: user
