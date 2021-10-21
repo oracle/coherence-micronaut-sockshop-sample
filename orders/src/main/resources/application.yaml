@@ -35,6 +35,3 @@ tracing:
     sender:
       agentHost: jaeger-agent
       agentPort: 5775
-coherence:
-  data:
-    orders:

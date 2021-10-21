@@ -40,5 +40,3 @@ coherence:
     enabled: false
   proxy:
     enabled: false
-  data:
-    payments:
