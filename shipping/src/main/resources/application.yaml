@@ -6,6 +6,8 @@
 #
 
 micronaut:
+  application:
+    name: Shipping
   server:
     cors:
       enabled: true

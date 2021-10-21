@@ -5,6 +5,8 @@
 # https://oss.oracle.com/licenses/upl.
 #
 micronaut:
+  application:
+    name: Users
   server:
     cors:
       enabled: true
