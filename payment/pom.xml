@@ -34,6 +34,7 @@
         <version.lib.rest-assured>4.4.0</version.lib.rest-assured>
         <version.lib.junit5>5.7.1</version.lib.junit5>
         <slf4j.version>1.7.32</slf4j.version>
+        <version.lib.tracerresolver>0.1.8</version.lib.tracerresolver>
 
         <!-- micronaut-parent overrides -->
         <micronaut.coherence.version>3.0.1</micronaut.coherence.version>
@@ -129,6 +130,11 @@
         <dependency>
             <groupId>io.micronaut</groupId>
             <artifactId>micronaut-tracing</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.opentracing.contrib</groupId>
+            <artifactId>opentracing-tracerresolver</artifactId>
+            <version>${version.lib.tracerresolver}</version>
         </dependency>
         <dependency>
             <groupId>io.jaegertracing</groupId>
