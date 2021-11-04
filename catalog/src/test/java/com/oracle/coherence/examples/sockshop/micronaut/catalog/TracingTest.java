@@ -43,35 +43,24 @@ public class TracingTest {
 		RestAssured.reset();
 		RestAssured.baseURI = "http://localhost";
 		RestAssured.port = server.getPort();
+		reporter.clear();
 	}
 
 	@Test
-	void testTracing() {
-		TestBody testBody = () -> {
-			when().
-					get("/catalogue?tags=sport").
-					then().
-					statusCode(200).
-					body("name", contains("SuperSport XL"));
+	void testTracing() throws InterruptedException {
+		when().
+				get("/catalogue?tags=sport").
+			then().
+				statusCode(200).
+				body("name", contains("SuperSport XL"));
 
-			Blocking.sleep(250);
-		};
-		runTest(testBody);
-
+		Blocking.sleep(250);
 
 		JaegerSpan[] localSpans = validateOpsPresent(
 				new String[]{"GET /catalogue", "Put.process"},
 				reporter.getSpans()
 		);
 		Arrays.stream(localSpans).forEach(TracingTest::validateTagsForSpan);
-	}
-
-	private void runTest(TestBody testBody) {
-		try {
-			testBody.run();
-		} catch (Exception e) {
-			throw Base.ensureRuntimeException(e);
-		}
 	}
 
 	protected static JaegerSpan[] validateOpsPresent(String[] sOpNames, List<JaegerSpan> spans) {
@@ -115,10 +104,5 @@ public class TracingTest {
 					metadata.get("cache"),
 					is("socks"));
 		}
-	}
-
-	@FunctionalInterface
-	protected interface TestBody {
-		void run() throws Exception;
 	}
 }

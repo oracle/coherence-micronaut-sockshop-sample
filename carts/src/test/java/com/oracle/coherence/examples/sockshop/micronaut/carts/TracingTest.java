@@ -45,41 +45,30 @@ public class TracingTest {
 	void setup() {
 		RestAssured.reset();
 		RestAssured.baseURI = "http://localhost";
+		reporter.clear();
 	}
 
 	@Test
-	void testTracing() {
-		TestBody testBody = () -> {
-			given().
-					port(server.getPort()).
-					contentType(ContentType.JSON).
-					body(new Item("X1", 0, 10f)).
-				when().
-					post("/carts/{cartId}/items", "C1").
-				then().
-					statusCode(HttpStatus.CREATED.getCode()).
-					body("itemId", Is.is("X1"),
-							"quantity", Is.is(1),
-							"unitPrice", Is.is(10f));
+	void testTracing() throws InterruptedException {
+		given().
+				port(server.getPort()).
+				contentType(ContentType.JSON).
+				body(new Item("X1", 0, 10f)).
+			when().
+				post("/carts/{cartId}/items", "C1").
+			then().
+				statusCode(HttpStatus.CREATED.getCode()).
+				body("itemId", Is.is("X1"),
+						"quantity", Is.is(1),
+						"unitPrice", Is.is(10f));
 
-			Blocking.sleep(250);
-		};
-		runTest(testBody);
-
+		Blocking.sleep(250);
 
 		JaegerSpan[] localSpans = validateOpsPresent(
 				new String[]{"POST /carts/{customerId}/items", "Invoke.process"},
 				reporter.getSpans()
 		);
 		Arrays.stream(localSpans).forEach(TracingTest::validateTagsForSpan);
-	}
-
-	private void runTest(TestBody testBody) {
-		try {
-			testBody.run();
-		} catch (Exception e) {
-			throw Base.ensureRuntimeException(e);
-		}
 	}
 
 	protected static JaegerSpan[] validateOpsPresent(String[] sOpNames, List<JaegerSpan> spans) {
@@ -123,10 +112,5 @@ public class TracingTest {
 					metadata.get("cache"),
 					is("carts"));
 		}
-	}
-
-	@FunctionalInterface
-	protected interface TestBody {
-		void run() throws Exception;
 	}
 }
