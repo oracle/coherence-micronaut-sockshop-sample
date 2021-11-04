@@ -22,7 +22,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
-import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -46,41 +45,29 @@ public class TracingTest {
 		RestAssured.reset();
 		RestAssured.baseURI = "http://localhost";
 		RestAssured.port = server.getPort();
+		reporter.clear();
 	}
 
 	@Test
-	void testTracing() {
-		TestBody testBody = () -> {
-			given().
-					body(TestDataFactory.paymentRequest("A123xxx", 50)).
-					contentType(ContentType.JSON).
-					accept(ContentType.JSON).
-				when().
-					post("/payments").
-				then().
-					statusCode(HttpStatus.OK.getCode()).
-					body("authorised", Matchers.is(true),
-							"message", Matchers.is("Payment authorized.")
-					);
+	void testTracing() throws InterruptedException {
+		given().
+				body(TestDataFactory.paymentRequest("A123xxx", 50)).
+				contentType(ContentType.JSON).
+				accept(ContentType.JSON).
+			when().
+				post("/payments").
+			then().
+				statusCode(HttpStatus.OK.getCode()).
+				body("authorised", Matchers.is(true),
+						"message", Matchers.is("Payment authorized."));
 
-			Blocking.sleep(250);
-		};
-		runTest(testBody);
-
+		Blocking.sleep(250);
 
 		JaegerSpan[] localSpans = validateOpsPresent(
 				new String[]{"POST /payments", "Put.process", "authorize"},
 				reporter.getSpans()
 		);
 		Arrays.stream(localSpans).forEach(TracingTest::validateTagsForSpan);
-	}
-
-	private void runTest(TestBody testBody) {
-		try {
-			testBody.run();
-		} catch (Exception e) {
-			throw Base.ensureRuntimeException(e);
-		}
 	}
 
 	protected static JaegerSpan[] validateOpsPresent(String[] sOpNames, List<JaegerSpan> spans) {
@@ -130,10 +117,5 @@ public class TracingTest {
 					metadata.get("cache"),
 					is("payments"));
 		}
-	}
-
-	@FunctionalInterface
-	protected interface TestBody {
-		void run() throws Exception;
 	}
 }

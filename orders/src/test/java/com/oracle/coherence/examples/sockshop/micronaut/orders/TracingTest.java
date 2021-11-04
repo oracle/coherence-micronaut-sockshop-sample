@@ -46,48 +46,37 @@ public class TracingTest {
 		RestAssured.reset();
 		RestAssured.baseURI = "http://localhost";
 		RestAssured.port = server.getPort();
+		reporter.clear();
 	}
 
 	@Test
-	void testTracing() {
-		TestBody testBody = () -> {
-			String baseUri = "http://localhost:" + server.getPort();
-			NewOrderRequest req = NewOrderRequest.builder()
-					.customer(URI.create(baseUri + "/customers/homer"))
-					.address(URI.create(baseUri + "/addresses/homer:1"))
-					.card(URI.create(baseUri + "/cards/homer:1234"))
-					.items(URI.create(baseUri + "/carts/homer/items"))
-					.build();
+	void testTracing() throws InterruptedException {
+		String baseUri = "http://localhost:" + server.getPort();
+		NewOrderRequest req = NewOrderRequest.builder()
+				.customer(URI.create(baseUri + "/customers/homer"))
+				.address(URI.create(baseUri + "/addresses/homer:1"))
+				.card(URI.create(baseUri + "/cards/homer:1234"))
+				.items(URI.create(baseUri + "/carts/homer/items"))
+				.build();
 
-			given().
-					body(req).
-					contentType(ContentType.JSON).
-					accept(ContentType.JSON).
-				when().
-					post("/orders").
-				then().
-					statusCode(HttpStatus.CREATED.getCode()).
-					body("total", Matchers.is(14.0f),
-							"status", Matchers.is("CREATED"));
+		given().
+				body(req).
+				contentType(ContentType.JSON).
+				accept(ContentType.JSON).
+			when().
+				post("/orders").
+			then().
+				statusCode(HttpStatus.CREATED.getCode()).
+				body("total", Matchers.is(14.0f),
+						"status", Matchers.is("CREATED"));
 
-			Blocking.sleep(250);
-		};
-		runTest(testBody);
-
+		Blocking.sleep(250);
 
 		JaegerSpan[] localSpans = validateOpsPresent(
 				new String[]{"POST /orders", "Put.process", "newOrder"},
 				reporter.getSpans()
 		);
 		Arrays.stream(localSpans).forEach(TracingTest::validateTagsForSpan);
-	}
-
-	private void runTest(TestBody testBody) {
-		try {
-			testBody.run();
-		} catch (Exception e) {
-			throw Base.ensureRuntimeException(e);
-		}
 	}
 
 	protected static JaegerSpan[] validateOpsPresent(String[] sOpNames, List<JaegerSpan> spans) {
@@ -137,10 +126,5 @@ public class TracingTest {
 					metadata.get("cache"),
 					is("orders"));
 		}
-	}
-
-	@FunctionalInterface
-	protected interface TestBody {
-		void run() throws Exception;
 	}
 }
