@@ -28,7 +28,7 @@
         <exec.mainClass>com.oracle.coherence.examples.sockshop.micronaut.payment.Application</exec.mainClass>
         <container.repo>ghcr.io/oracle/coherence-micronaut-sockshop</container.repo>
         <coherence.groupId>com.oracle.coherence.ce</coherence.groupId>
-        <coherence.version>21.06.2</coherence.version>
+        <coherence.version>21.12</coherence.version>
         <version.lib.lombok>1.18.20</version.lib.lombok>
         <version.lib.hamcrest>2.2</version.lib.hamcrest>
         <version.lib.rest-assured>4.4.0</version.lib.rest-assured>
@@ -60,6 +60,26 @@
             <url>https://jcenter.bintray.com</url>
         </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>sonatype-staging</id>
+            <url>https://oss.sonatype.org/content/groups/staging/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>jcenter.bintray.com</id>
+            <url>https://jcenter.bintray.com</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <groupId>com.oracle.coherence.examples.sockshop.micronaut</groupId>
     <artifactId>payment</artifactId>
