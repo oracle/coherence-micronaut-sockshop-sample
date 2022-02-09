@@ -36,7 +36,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
                 url = "https://github.com/coherence-sockshop-micronaut/orders"))
 public class Application {
     public static void main(String[] args) {
-        ApplicationContext context = Micronaut.run(Application.class);
+        ApplicationContext context = Micronaut.run(Application.class, args);
         context.getBean(Coherence.class);
     }
 }

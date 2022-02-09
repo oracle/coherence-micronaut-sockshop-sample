@@ -80,7 +80,8 @@ If you do, you can simply run the following command from the `coherence-micronau
 
 * Install the Coherence Operator
 
-Install the Coherence Operator using the instructions in the [Coherence Operator Quick Start](https://oracle.github.io/coherence-operator/docs/latest/#/about/03_quickstart) documentation.
+Install the Coherence Operator using the instructions in the
+[Coherence Operator Quick Start](https://oracle.github.io/coherence-operator/docs/latest/#/docs/about/03_quickstart) documentation.
 
 * **Installing a Back-end**
 
@@ -96,7 +97,8 @@ Install the back-end into the `sockshop` namespace.
     $ kubectl --namespace sockshop apply -k k8s/coherence 
     ```
 
-The `-k` parameter above will use `kubectl` with `kustomize` to merge all the files under the specified directory and create all Kubernetes resources defined by them, such as deployments and services for each microservice.
+The `-k` parameter above will use `kubectl` with `kustomize` to merge all the files under the specified directory and
+create all Kubernetes resources defined by them, such as deployments and services for each microservice.
 
 ### (Optional) Install the Original WeaveSocks Front End
 
