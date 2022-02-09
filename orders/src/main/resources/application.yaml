@@ -35,3 +35,11 @@ tracing:
     sender:
       agentHost: jaeger-agent
       agentPort: 5775
+  zipkin:
+    enabled: false
+    sampler:
+      probability: 1
+    http:
+      url: http://localhost:9411
+      path:
+    supportsJoin: false
