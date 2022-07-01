@@ -29,7 +29,7 @@
         <exec.mainClass>com.oracle.coherence.examples.sockshop.micronaut.orders.Application</exec.mainClass>
         <container.repo>ghcr.io/oracle/coherence-micronaut-sockshop</container.repo>
         <coherence.groupId>com.oracle.coherence.ce</coherence.groupId>
-        <coherence.version>22.06</coherence.version>
+        <coherence.version>22.06.1-SNAPSHOT</coherence.version>
         <version.lib.lombok>1.18.24</version.lib.lombok>
         <version.lib.hamcrest>2.2</version.lib.hamcrest>
         <version.lib.rest-assured>5.1.1</version.lib.rest-assured>
@@ -82,7 +82,7 @@
 
     <groupId>com.oracle.coherence.examples.sockshop.micronaut</groupId>
     <artifactId>orders</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1-SNAPSHOT</version>
 
     <dependencies>
         <dependency>

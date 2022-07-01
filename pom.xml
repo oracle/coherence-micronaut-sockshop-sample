@@ -14,7 +14,7 @@
     <groupId>com.oracle.coherence.examples.sockshop.micronaut</groupId>
     <artifactId>sockshop</artifactId>
     <packaging>pom</packaging>
-    <version>1.2.0</version>
+    <version>1.2.1-SNAPSHOT</version>
 
     <modules>
         <module>carts</module>
