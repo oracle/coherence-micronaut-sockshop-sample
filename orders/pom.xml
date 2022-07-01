@@ -51,7 +51,7 @@
                 <enabled>true</enabled>
             </releases>
             <snapshots>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
             </snapshots>
         </repository>
         <repository>
@@ -71,7 +71,7 @@
                 <enabled>true</enabled>
             </releases>
             <snapshots>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
             </snapshots>
         </pluginRepository>
         <pluginRepository>
@@ -82,7 +82,7 @@
 
     <groupId>com.oracle.coherence.examples.sockshop.micronaut</groupId>
     <artifactId>orders</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.2.0</version>
 
     <dependencies>
         <dependency>
