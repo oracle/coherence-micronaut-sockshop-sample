@@ -13,15 +13,19 @@ on:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        java-version: [ 11, 17 ]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK
-      uses: actions/setup-java@v1
+    - uses: actions/checkout@v3.0.2
+    - name: Set up JDK ${{ matrix.java-version }}
+      uses: actions/setup-java@v3.4.1
       with:
-        java-version: '11'
+        distribution: 'adopt'
+        java-version: ${{ matrix.java-version }}
     - name: Cache Maven packages
-      uses: actions/cache@v1
+      uses: actions/cache@v3.0.6
       with:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
@@ -43,4 +47,4 @@ jobs:
         docker push ghcr.io/oracle/coherence-micronaut-sockshop-payment:latest
         docker push ghcr.io/oracle/coherence-micronaut-sockshop-shipping:latest
         docker push ghcr.io/oracle/coherence-micronaut-sockshop-users:latest
-      if: github.event_name == 'push'
+      if: "github.event_name == 'push' && matrix.java-version == 11"
