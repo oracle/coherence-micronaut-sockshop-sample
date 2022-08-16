@@ -256,7 +256,7 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                            <version>1.18.16</version>
+                            <version>${version.lib.lombok}</version>
                         </path>
                         <path>
                             <groupId>io.micronaut.openapi</groupId>
