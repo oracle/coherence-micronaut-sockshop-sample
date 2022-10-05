@@ -135,7 +135,7 @@ public class CoherenceOrderResourceTest {
                 .items(URI.create(baseUri + "/carts/homer/items"))
                 .build();
 
-        given().
+        String orderId = given().
                 body(req).
                 contentType(ContentType.JSON).
                 accept(ContentType.JSON).
@@ -144,9 +144,9 @@ public class CoherenceOrderResourceTest {
         then().
                 statusCode(HttpStatus.CREATED.getCode()).
                 body("total", is(14.0f),
-                     "status", is("CREATED"));
+                     "status", is("CREATED")).
+                extract().response().body().path("id");
 
-        final String orderId = orders.getLastOrderId();
         Eventually.assertDeferred(() -> orders.get(orderId).getStatus(), Matchers.is(Order.Status.SHIPPED));
 
         Order order = orders.get(orderId);
@@ -165,7 +165,7 @@ public class CoherenceOrderResourceTest {
                 .items(URI.create(baseUri + "/carts/lisa/items"))
                 .build();
 
-        given().
+        String orderId = given().
                 body(req).
                 contentType(ContentType.JSON).
                 accept(ContentType.JSON).
@@ -174,9 +174,9 @@ public class CoherenceOrderResourceTest {
                 then().
                 statusCode(HttpStatus.CREATED.getCode()).
                 body("total", is(14.0f),
-                        "status", is("CREATED"));
+                        "status", is("CREATED")).
+                extract().response().body().path("id");
 
-        final String orderId = orders.getLastOrderId();
         Eventually.assertDeferred(() -> orders.get(orderId).getStatus(), Matchers.is(Order.Status.PAYMENT_FAILED));
 
         Order order = orders.get(orderId);
@@ -194,7 +194,7 @@ public class CoherenceOrderResourceTest {
                 .items(URI.create(baseUri + "/carts/bart/items"))
                 .build();
 
-        given().
+        String orderId = given().
                 body(req).
                 contentType(ContentType.JSON).
                 accept(ContentType.JSON).
@@ -203,9 +203,9 @@ public class CoherenceOrderResourceTest {
         then().
                 statusCode(HttpStatus.CREATED.getCode()).
                 body("total", is(14.0f),
-                    "status", is("CREATED"));
+                    "status", is("CREATED")).
+                extract().response().body().path("id");
 
-        final String orderId = orders.getLastOrderId();
         Eventually.assertDeferred(() -> orders.get(orderId).getStatus(), Matchers.is(Order.Status.PAYMENT_FAILED));
 
         Order order = orders.get(orderId);

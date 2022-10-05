@@ -14,7 +14,6 @@ import io.micronaut.context.annotation.Primary;
 @Primary
 public abstract class TestCoherenceOrderRepository extends CoherenceOrderRepository
         implements TestOrderRepository {
-    private String lastOrderId;
 
     public void clear() {
         getMap().truncate();
@@ -23,12 +22,6 @@ public abstract class TestCoherenceOrderRepository extends CoherenceOrderReposit
     @Override
     public Order save(Order order) {
         super.save(order);
-        lastOrderId = order.getOrderId();
         return order;
-    }
-
-    @Override
-    public String getLastOrderId() {
-        return lastOrderId;
     }
 }

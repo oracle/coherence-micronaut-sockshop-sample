@@ -13,7 +13,7 @@
     <parent>
         <groupId>io.micronaut</groupId>
         <artifactId>micronaut-parent</artifactId>
-        <version>3.5.3</version>
+        <version>3.7.1</version>
         <relativePath/>
     </parent>
 
@@ -28,14 +28,14 @@
         <exec.mainClass>com.oracle.coherence.examples.sockshop.micronaut.payment.Application</exec.mainClass>
         <container.repo>ghcr.io/oracle/coherence-micronaut-sockshop</container.repo>
         <coherence.groupId>com.oracle.coherence.ce</coherence.groupId>
-        <coherence.version>22.06.2-SNAPSHOT</coherence.version>
+        <coherence.version>22.06.2</coherence.version>
         <version.lib.lombok>1.18.24</version.lib.lombok>
         <version.lib.hamcrest>2.2</version.lib.hamcrest>
         <version.lib.rest-assured>5.1.1</version.lib.rest-assured>
         <version.lib.tracerresolver>0.1.8</version.lib.tracerresolver>
 
         <!-- micronaut-parent overrides -->
-        <micronaut.coherence.version>3.5.1</micronaut.coherence.version>
+        <micronaut.coherence.version>3.7.1</micronaut.coherence.version>
     </properties>
 
     <repositories>
@@ -81,7 +81,7 @@
 
     <groupId>com.oracle.coherence.examples.sockshop.micronaut</groupId>
     <artifactId>payment</artifactId>
-    <version>1.2.3-SNAPSHOT</version>
+    <version>1.3.0</version>
 
     <dependencies>
         <dependency>
