@@ -14,6 +14,11 @@ import io.micronaut.context.annotation.Primary;
 @Primary
 public abstract class TestCoherenceOrderRepository extends CoherenceOrderRepository
         implements TestOrderRepository {
+
+    public TestCoherenceOrderRepository() {
+        System.out.println("### DEBUG: " + this);
+    }
+
     private String lastOrderId;
 
     public void clear() {
@@ -23,12 +28,14 @@ public abstract class TestCoherenceOrderRepository extends CoherenceOrderReposit
     @Override
     public Order save(Order order) {
         super.save(order);
+        System.out.println("### DEBUG SAVE: " + this);
         lastOrderId = order.getOrderId();
         return order;
     }
 
     @Override
     public String getLastOrderId() {
+        System.out.println("### DEBUG GET: " + this + ", orderId: " + lastOrderId);
         return lastOrderId;
     }
 }
