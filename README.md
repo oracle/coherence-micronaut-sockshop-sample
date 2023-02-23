@@ -177,6 +177,14 @@ locally, and (optionally) push new container images to the repository of your ch
 
 [Go to Development section](./doc/development.md)
 
+## Contributing
+
+This project welcomes contributions from the community. Before submitting a pull request, please [review our contribution guide](./CONTRIBUTING.md)
+
+## Security
+
+Please consult the [security guide](./SECURITY.md) for our responsible security vulnerability disclosure process
+
 ## License
 
 The Universal Permissive License (UPL), Version 1.0
