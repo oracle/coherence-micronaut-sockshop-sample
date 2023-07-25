@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Oracle and/or its affiliates.
+ * Copyright (c) 2021, 2023 Oracle and/or its affiliates.
  *
  * Licensed under the Universal Permissive License v 1.0 as shown at
  * https://oss.oracle.com/licenses/upl.
@@ -9,6 +9,7 @@ package com.oracle.coherence.examples.sockshop.micronaut.orders;
 
 
 import io.micronaut.http.HttpResponse;
+import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Consumes;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.PathVariable;
@@ -18,6 +19,7 @@ import io.micronaut.http.annotation.QueryValue;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
@@ -52,5 +54,5 @@ public interface OrderApi {
             @ApiResponse(responseCode = "201", description = "if the request is successfully processed"),
             @ApiResponse(responseCode = "406", description = "if the payment is not authorized")
     })
-    HttpResponse newOrder(@Parameter(description = "Order request") NewOrderRequest request);
+    HttpResponse newOrder(@RequestBody(description = "Order request") @Body NewOrderRequest request);
 }

@@ -38,13 +38,13 @@ public class PaymentResource implements PaymentApi {
     private MeterRegistry meterRegistry;
 
     @Override
-    @NewSpan
+    @NewSpan("get-order-authorizations")
     public HttpResponse<Collection<? extends Authorization>> getOrderAuthorizations(String orderId) {
         return HttpResponse.ok(payments.findAuthorizationsByOrder(orderId));
     }
 
     @Override
-    @NewSpan
+    @NewSpan("authorize")
     public Authorization authorize(PaymentRequest paymentRequest) {
         meterRegistry.counter("payments.authorize", "controller", "payments")
                 .increment();

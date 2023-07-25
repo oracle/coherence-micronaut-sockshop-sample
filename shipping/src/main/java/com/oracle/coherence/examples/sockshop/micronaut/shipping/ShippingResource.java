@@ -37,7 +37,7 @@ public class ShippingResource implements ShippingApi {
 
     @Get("{orderId}")
     @Produces(APPLICATION_JSON)
-    @NewSpan
+    @NewSpan("shipment-by-order-id")
     public Shipment getShipmentByOrderId(String orderId) {
         return shipments.getShipment(orderId);
     }
@@ -45,7 +45,7 @@ public class ShippingResource implements ShippingApi {
     @Post
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
-    @NewSpan
+    @NewSpan("ship")
     @Timed("ship")
     public Shipment ship(@Body ShippingRequest req) {
         // defaults

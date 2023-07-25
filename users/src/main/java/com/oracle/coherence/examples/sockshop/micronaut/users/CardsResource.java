@@ -23,13 +23,13 @@ public class CardsResource implements CardApi{
     private UserRepository users;
 
     @Override
-    @NewSpan
+    @NewSpan("get-all-cards")
     public HttpResponse getAllCards() {
         return HttpResponse.ok(JsonHelpers.embed("card", Collections.emptyList()));
     }
 
     @Override
-    @NewSpan
+    @NewSpan("register-card")
     public HttpResponse registerCard(AddCardRequest req) {
         Card card = new Card(req.longNum, req.expires, req.ccv);
         CardId id = users.addCard(req.userID, card);
@@ -38,13 +38,13 @@ public class CardsResource implements CardApi{
     }
 
     @Override
-    @NewSpan
+    @NewSpan("get-card")
     public Card getCard(CardId id) {
         return users.getCard(id).mask();
     }
 
     @Override
-    @NewSpan
+    @NewSpan("delete-card")
     public HttpResponse deleteCard(CardId id) {
         try {
             users.removeCard(id);

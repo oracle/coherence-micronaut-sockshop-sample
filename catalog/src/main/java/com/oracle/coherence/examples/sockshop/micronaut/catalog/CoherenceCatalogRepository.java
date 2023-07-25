@@ -21,6 +21,7 @@ import com.tangosol.util.function.Remote;
 import io.micronaut.coherence.data.AbstractCoherenceRepository;
 import io.micronaut.coherence.data.annotation.CoherenceRepository;
 
+import io.micronaut.tracing.annotation.NewSpan;
 import jakarta.annotation.PostConstruct;
 
 import java.io.IOException;
@@ -46,6 +47,7 @@ public abstract class CoherenceCatalogRepository
     private static final Logger LOGGER = Logger.getLogger(CoherenceCatalogRepository.class.getName());
 
     @Override
+    @NewSpan("getSocks")
     public Collection<? extends Sock> getSocks(String tags, String order, int pageNum, int pageSize) {
         Remote.Comparator<Sock> comparator = "price".equals(order)
                 ? PRICE_COMPARATOR
@@ -59,16 +61,19 @@ public abstract class CoherenceCatalogRepository
     }
 
     @Override
+    @NewSpan("getSock")
     public Sock getSock(String sockId) {
         return get(sockId);
     }
 
     @Override
+    @NewSpan("getSockCount")
     public long getSockCount(String tags) {
         return count(createTagsFilter(tags));
     }
 
     @Override
+    @NewSpan("getTags")
     public Set<String> getTags() {
         return getAll().stream()
                 .flatMap(sock -> sock.getTag().stream())

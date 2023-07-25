@@ -33,7 +33,6 @@ import io.micronaut.tracing.annotation.NewSpan;
 @Controller
 public class UserResource implements UserApi {
     static final String HEADER_AUTHENTICATION_REQUIRED = "WWW-Authenticate";
-    static final String HEADER_AUTHENTICATION = "Authorization";
     static final String BASIC_PREFIX = "Basic ";
 
     private static final Logger LOGGER = Logger.getLogger(UserResource.class.getName());
@@ -43,7 +42,7 @@ public class UserResource implements UserApi {
     private UserRepository users;
 
     @Override
-    @NewSpan
+    @NewSpan("login")
     public HttpResponse login(String auth) {
         if (!auth.startsWith(BASIC_PREFIX)) {
             return fail("Basic authentication header is missing");
@@ -71,7 +70,7 @@ public class UserResource implements UserApi {
     }
 
     @Override
-    @NewSpan
+    @NewSpan("register")
     public HttpResponse register(User user) {
         User prev = users.register(user);
         if (prev != null) {

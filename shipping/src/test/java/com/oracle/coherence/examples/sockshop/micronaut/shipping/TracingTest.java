@@ -17,7 +17,9 @@ import io.micronaut.runtime.server.EmbeddedServer;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import java.util.Optional;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -65,8 +67,12 @@ public class TracingTest {
 
 		Blocking.sleep(250);
 
+		List<JaegerSpan> spans = reporter.getSpans();
+
+		validateNoNullOperationNames(spans);
+
 		JaegerSpan[] localSpans = validateOpsPresent(
-				new String[]{"POST /shipping", "Put.process", "ship"},
+				new String[]{"POST /shipping", "Put.process", "ship", "saveShipment"},
 				reporter.getSpans()
 		);
 		Arrays.stream(localSpans).forEach(TracingTest::validateTagsForSpan);
@@ -86,11 +92,12 @@ public class TracingTest {
 			}
 		}
 
-		for (int i = 0, len = sOpNames.length; i < len; i++) {
-			assertThat("Unable to find operation " + sOpNames[i] + " in spans on the member.",
-					spansFound[i],
-					is(notNullValue()));
-		}
+	    for (int i = 0, len = sOpNames.length; i < len; i++) {
+	        assertThat("Unable to find operation [" + sOpNames[i] +
+	        		   "] in spans on the member. Captured spans [" + spans + ']',
+	        		   spansFound[i],
+	        		   is(notNullValue()));
+	    }
 		return spansFound;
 	}
 
@@ -120,4 +127,14 @@ public class TracingTest {
 					is("shipments"));
 		}
 	}
+
+    protected static void validateNoNullOperationNames(List<JaegerSpan> spans) {
+    	Optional<JaegerSpan> nullSpan =
+    			spans.stream()
+    					.filter(jaegerSpan -> jaegerSpan.getOperationName() == null).findAny();
+
+    	if (nullSpan.isPresent()) {
+    		Assertions.fail(String.format("Found Span will null operation name.  Spans: %s", spans));
+    	}
+    }
 }

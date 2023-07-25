@@ -23,7 +23,7 @@ public class TagsResource implements TagApi {
     private CatalogRepository catalog;
 
     @Override
-    @NewSpan
+    @NewSpan("get-tags")
     public Tags getTags() {
         return new Tags(catalog.getTags());
     }

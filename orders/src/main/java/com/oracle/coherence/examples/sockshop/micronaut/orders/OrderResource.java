@@ -47,7 +47,7 @@ public class OrderResource implements OrderApi {
     protected UsersClient usersService;
 
     @Override
-    @NewSpan
+    @NewSpan("get-orders-for-customer")
     public HttpResponse getOrdersForCustomer(String customerId) {
         Collection<? extends Order> customerOrders = orders.findOrdersByCustomerId(customerId);
         if (customerOrders.isEmpty()) {
@@ -62,7 +62,7 @@ public class OrderResource implements OrderApi {
     }
 
     @Override
-    @NewSpan
+    @NewSpan("get-order")
     public HttpResponse getOrder(String orderId) {
         Order order = orders.get(orderId);
         return order == null
@@ -71,7 +71,7 @@ public class OrderResource implements OrderApi {
     }
 
     @Override
-    @NewSpan
+    @NewSpan("new-order")
     @Timed("order.new")
     public HttpResponse newOrder(NewOrderRequest request) {
         log.info("Processing new order: " + request);

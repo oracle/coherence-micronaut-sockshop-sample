@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Oracle and/or its affiliates.
+ * Copyright (c) 2021, 2023 Oracle and/or its affiliates.
  *
  * Licensed under the Universal Permissive License v 1.0 as shown at
  * https://oss.oracle.com/licenses/upl.
@@ -9,7 +9,6 @@ package com.oracle.coherence.examples.sockshop.micronaut.users;
 
 import io.jaegertracing.internal.JaegerSpan;
 import io.jaegertracing.internal.reporters.InMemoryReporter;
-import io.jaegertracing.spi.Reporter;
 import io.micronaut.context.annotation.Factory;
 import jakarta.inject.Singleton;
 
@@ -19,7 +18,7 @@ import java.util.List;
 @Factory
 public class TracerFactory {
 	@Singleton
-	Reporter inMemoryReporter() {
+	SafeInMemoryReporter inMemoryReporter() {
 		return new SafeInMemoryReporter();
 	}
 

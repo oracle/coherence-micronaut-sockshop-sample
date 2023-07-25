@@ -12,6 +12,7 @@ import io.micrometer.core.instrument.MeterRegistry;
 
 import io.micronaut.context.annotation.Property;
 
+import io.micronaut.tracing.annotation.NewSpan;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
@@ -73,6 +74,7 @@ public class DefaultPaymentService implements PaymentService {
     }
 
     @Override
+    @NewSpan("authorize")
     public Authorization authorize(String orderId, String firstName, String lastName, Card card, Address address, float amount) {
         boolean fAuthorized = amount > 0 && amount <= paymentLimit;
 

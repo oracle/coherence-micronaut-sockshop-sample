@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Oracle and/or its affiliates.
+ * Copyright (c) 2021, 2023 Oracle and/or its affiliates.
  *
  * Licensed under the Universal Permissive License v 1.0 as shown at
  * https://oss.oracle.com/licenses/upl.
@@ -10,6 +10,7 @@ package com.oracle.coherence.examples.sockshop.micronaut.carts;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.micronaut.http.HttpResponse;
+import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Consumes;
 import io.micronaut.http.annotation.Delete;
 import io.micronaut.http.annotation.Get;
@@ -61,7 +62,7 @@ public interface ItemsApi {
                     schema = @Schema(implementation = Item.class)))
     HttpResponse<Item> addItem(@Parameter(name = "customerId", description = "Customer identifier")
                                @PathVariable("customerId") String customerId,
-                               @RequestBody(description = "Item to add to the cart") Item item);
+                               @RequestBody(description = "Item to add to the cart") @Body Item item);
 
     @Get("{itemId}")
     @Produces(APPLICATION_JSON)
@@ -95,5 +96,5 @@ public interface ItemsApi {
                     + "if it does")
     @ApiResponse(responseCode = "202", description = "Regardless of whether the specified item exists in the cart")
     HttpResponse updateItem(@PathVariable("customerId") String customerId,
-                            @RequestBody(description = "Item to update") Item item);
+                            @RequestBody(description = "Item to update") @Body Item item);
 }

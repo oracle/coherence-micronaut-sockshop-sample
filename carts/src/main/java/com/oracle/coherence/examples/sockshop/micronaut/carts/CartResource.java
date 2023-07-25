@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Oracle and/or its affiliates.
+ * Copyright (c) 2021, 2023 Oracle and/or its affiliates.
  *
  * Licensed under the Universal Permissive License v 1.0 as shown at
  * https://oss.oracle.com/licenses/upl.
@@ -12,7 +12,7 @@ import io.micronaut.http.HttpStatus;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.tracing.annotation.NewSpan;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 
 /**
@@ -25,13 +25,12 @@ public class CartResource implements CartApi {
     private CartRepository carts;
 
     @Override
-    @NewSpan
     public Cart getCart(String customerId) {
         return carts.getOrCreateCart(customerId);
     }
 
     @Override
-    @NewSpan
+    @NewSpan("delete-cart")
     public HttpResponse deleteCart(String customerId) {
         return carts.deleteCart(customerId)
                 ? HttpResponse.accepted()
@@ -39,7 +38,7 @@ public class CartResource implements CartApi {
     }
 
     @Override
-    @NewSpan
+    @NewSpan("merge-carts")
     public HttpResponse mergeCarts(String customerId, String sessionId) {
         boolean fMerged = carts.mergeCarts(customerId, sessionId);
         return fMerged

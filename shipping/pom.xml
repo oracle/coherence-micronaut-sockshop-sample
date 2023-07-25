@@ -11,9 +11,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>io.micronaut</groupId>
+        <groupId>io.micronaut.platform</groupId>
         <artifactId>micronaut-parent</artifactId>
-        <version>3.7.2</version>
+        <version>4.0.0</version>
         <relativePath/>
     </parent>
 
@@ -28,14 +28,14 @@
         <exec.mainClass>com.oracle.coherence.examples.sockshop.micronaut.shipping.Application</exec.mainClass>
         <container.repo>ghcr.io/oracle/coherence-micronaut-sockshop</container.repo>
         <coherence.groupId>com.oracle.coherence.ce</coherence.groupId>
-        <coherence.version>23.03</coherence.version>
+        <coherence.version>23.03.1</coherence.version>
         <version.lib.lombok>1.18.24</version.lib.lombok>
         <version.lib.hamcrest>2.2</version.lib.hamcrest>
-        <version.lib.rest-assured>5.3.0</version.lib.rest-assured>
+        <version.lib.rest-assured>5.3.1</version.lib.rest-assured>
         <version.lib.tracerresolver>0.1.8</version.lib.tracerresolver>
 
         <!-- overrides from micronaut-parent -->
-        <micronaut.coherence.version>3.7.2</micronaut.coherence.version>
+        <micronaut.coherence.version>4.0.0</micronaut.coherence.version>
     </properties>
 
     <repositories>
@@ -118,7 +118,7 @@
         </dependency>
         <dependency>
             <groupId>io.micronaut</groupId>
-            <artifactId>micronaut-validation</artifactId>
+            <artifactId>micronaut-jackson-databind</artifactId>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -144,6 +144,11 @@
         <dependency>
             <groupId>io.micronaut.micrometer</groupId>
             <artifactId>micronaut-micrometer-registry-prometheus</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -178,6 +183,13 @@
             <artifactId>logback-classic</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.fusesource.jansi/jansi -->
+        <dependency>
+            <groupId>org.fusesource.jansi</groupId>
+            <artifactId>jansi</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+
 
         <!-- tracing dependencies -->
 
@@ -187,20 +199,7 @@
         </dependency>
         <dependency>
             <groupId>io.micronaut.tracing</groupId>
-            <artifactId>micronaut-tracing-zipkin</artifactId>
-        </dependency>
-
-        <!-- TODO Needs to be removed -->
-
-        <dependency>
-            <groupId>javax.json</groupId>
-            <artifactId>javax.json-api</artifactId>
-            <version>1.1.4</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.json.bind</groupId>
-            <artifactId>javax.json.bind-api</artifactId>
-            <version>1.0</version>
+            <artifactId>micronaut-tracing-brave-http</artifactId>
         </dependency>
 
         <!-- TODO Needs to be removed -->
@@ -215,9 +214,9 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>io.micronaut.build</groupId>
+                <groupId>io.micronaut.maven</groupId>
                 <artifactId>micronaut-maven-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>${micronaut.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -268,7 +267,7 @@
                             <version>${micronaut.version}</version>
                         </path>
                         <path>
-                            <groupId>io.micronaut</groupId>
+                            <groupId>io.micronaut.validation</groupId>
                             <artifactId>micronaut-validation</artifactId>
                             <version>${micronaut.version}</version>
                         </path>

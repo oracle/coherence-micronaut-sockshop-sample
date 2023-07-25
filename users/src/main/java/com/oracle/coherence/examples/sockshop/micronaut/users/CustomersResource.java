@@ -20,33 +20,33 @@ public class CustomersResource implements CustomerApi {
     private UserRepository users;
 
     @Override
-    @NewSpan
+    @NewSpan("get-all-customers")
     public HttpResponse getAllCustomers() {
         return HttpResponse.ok(JsonHelpers.embed("customer", users.getAllUsers()));
     }
 
     @Override
-    @NewSpan
+    @NewSpan("get-customer")
     public HttpResponse getCustomer(String id) {
         return HttpResponse.ok(users.getOrCreate(id));
     }
 
     @Override
-    @NewSpan
+    @NewSpan("delete-customer")
     public HttpResponse deleteCustomer(String id) {
         User prev = users.removeUser(id);
         return HttpResponse.ok(JsonHelpers.obj().put("status", prev != null));
     }
 
     @Override
-    @NewSpan
+    @NewSpan("get-customer-cards")
     public HttpResponse getCustomerCards(String id) {
         User user = users.getUser(id);
         return HttpResponse.ok(JsonHelpers.embed("card", user.getCards().stream().map(Card::mask).toArray()));
     }
 
     @Override
-    @NewSpan
+    @NewSpan("get-customer-addresses")
     public HttpResponse getCustomerAddresses(String id) {
         User user = users.getUser(id);
         return HttpResponse.ok(JsonHelpers.embed("address", user.getAddresses()));

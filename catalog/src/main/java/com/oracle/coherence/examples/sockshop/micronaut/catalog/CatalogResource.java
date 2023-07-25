@@ -34,13 +34,13 @@ public class CatalogResource implements CatalogApi {
     private CatalogRepository catalog;
 
     @Override
-    @NewSpan
+    @NewSpan("get-socks")
     public Collection<? extends Sock> getSocks(@Nullable String tags, String order, int pageNum, int pageSize) {
         return catalog.getSocks(tags, order, pageNum, pageSize);
     }
 
     @Override
-    @NewSpan
+    @NewSpan("get-sock-count")
     public Count getSockCount(@Nullable String tags) {
         return new Count(catalog.getSockCount(tags));
     }
@@ -50,7 +50,7 @@ public class CatalogResource implements CatalogApi {
             @ApiResponse(responseCode = "404", description = "if socks do not exist")
     })
     @Override
-    @NewSpan
+    @NewSpan("get-sock")
     public HttpResponse<Sock> getSock(String sockId) {
         Sock sock = catalog.getSock(sockId);
         return sock == null
@@ -59,7 +59,7 @@ public class CatalogResource implements CatalogApi {
     }
 
     @Override
-    @NewSpan
+    @NewSpan("get-image")
     public HttpResponse<StreamedFile> getImage(String image) {
         InputStream img = getClass().getClassLoader().getResourceAsStream("web/images/" + image);
         return img == null

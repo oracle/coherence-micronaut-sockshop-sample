@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Oracle and/or its affiliates.
+ * Copyright (c) 2021, 2023 Oracle and/or its affiliates.
  *
  * Licensed under the Universal Permissive License v 1.0 as shown at
  * https://oss.oracle.com/licenses/upl.
@@ -12,7 +12,7 @@ import io.micronaut.http.HttpStatus;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.tracing.annotation.NewSpan;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import java.util.List;
 
@@ -27,13 +27,13 @@ public class ItemsResource implements ItemsApi {
     private CartRepository carts;
 
     @Override
-    @NewSpan
+    @NewSpan("get-items")
     public List<Item> getItems(String customerId) {
         return carts.getItems(customerId);
     }
 
     @Override
-    @NewSpan
+    @NewSpan("add-item")
     public HttpResponse<Item> addItem(String customerId, Item item) {
         if (item.getQuantity() == 0) {
             item.setQuantity(1);
@@ -43,7 +43,7 @@ public class ItemsResource implements ItemsApi {
     }
 
     @Override
-    @NewSpan
+    @NewSpan("get-items")
     public HttpResponse<Item> getItem(String customerId, String itemId) {
         Item item = carts.getItem(customerId, itemId);
         return item == null
@@ -52,14 +52,14 @@ public class ItemsResource implements ItemsApi {
     }
 
     @Override
-    @NewSpan
+    @NewSpan("delete-item")
     public HttpResponse deleteItem(String customerId, String itemId) {
         carts.deleteItem(customerId, itemId);
         return HttpResponse.accepted();
     }
 
     @Override
-    @NewSpan
+    @NewSpan("update-item")
     public HttpResponse updateItem(String customerId, Item item) {
         carts.updateItem(customerId, item);
         return HttpResponse.accepted();
