@@ -14,6 +14,7 @@ jobs:
       matrix:
         java-version: [ 17 ]
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v3.0.2
     - name: Set up JDK ${{ matrix.java-version }}
@@ -21,16 +22,19 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: ${{ matrix.java-version }}
+
     - name: Cache Maven packages
       uses: actions/cache@v3.0.6
       with:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
+
     - name: Build with Maven
       env:
         MAVEN_OPTS: -Dmaven.wagon.http.pool=false -Dmaven.wagon.httpconnectionManager.ttlSeconds=120 -Dmaven.wagon.http.retryHandler.count=3
       run: mvn -B install --file pom.xml
+
     - name: Push container images
       env:
         REGISTRY_USER: ${{ github.actor }}
@@ -44,4 +48,29 @@ jobs:
         docker push ghcr.io/oracle/coherence-micronaut-sockshop-payment:latest
         docker push ghcr.io/oracle/coherence-micronaut-sockshop-shipping:latest
         docker push ghcr.io/oracle/coherence-micronaut-sockshop-users:latest
-      if: "github.event_name == 'push' && matrix.java-version == 11"
+      if: "github.event_name == 'push' && matrix.java-version == 17"
+
+    - name: Test Against Kind
+      env:
+        KIND_IMAGE: kindest/node:v1.24.7@sha256:577c630ce8e509131eab1aea12c022190978dd2f745aac5eb1fe65c0807eb315
+      run: |
+        echo "Starting kind using ${KIND_IMAGE}"
+        kind create cluster --name sockshop --wait 10m --image ${KIND_IMAGE}
+        echo "Build latest images"
+        mvn -B package --file pom.xml -Pcontainer -DskipTests
+        kubectl create namespace sockshop
+        echo "Deploying Operator"
+        kubectl apply -f https://github.com/oracle/coherence-operator/releases/download/v3.2.11/coherence-operator.yaml
+        kubectl rollout status deployment coherence-operator-controller-manager -n coherence --timeout=180s
+        echo "Deploying Sockshop"
+        kubectl apply -k k8s/coherence --namespace sockshop
+        echo "Waiting 30 seconds to ensure the pods are at least created..."
+        sleep 30
+        for pod in carts-0 orders-0 catalog-0 shipping-0 users-0 payment-0
+        do
+          kubectl -n sockshop wait --for condition=ready --timeout 480s pod/${pod}
+        done
+        echo "Success"
+        kubectl delete -k k8s/coherence --namespace sockshop
+        kubectl delete -f https://github.com/oracle/coherence-operator/releases/download/v3.2.11/coherence-operator.yaml
+        kubectl delete ns sockshop
