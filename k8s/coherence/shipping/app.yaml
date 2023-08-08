@@ -13,6 +13,9 @@ spec:
   role: Shipping
   replicas: 1
   image: ghcr.io/oracle/coherence-micronaut-sockshop-shipping:latest
+  readinessProbe:
+    initialDelaySeconds: 10
+    periodSeconds: 10
   env:
     - name: TRACING_HOST
       value: "jaeger-collector"

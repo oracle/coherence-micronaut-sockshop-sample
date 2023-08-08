@@ -79,24 +79,24 @@ The easiest way to try the demo is to use Kubernetes deployment scripts from thi
 
 If you do, you can simply run the following command from the `coherence-micronaut-sockshop-sample` directory.
 
-* Install the Coherence Operator
+**Install the Coherence Operator**
 
 Install the Coherence Operator using the instructions in the
 [Coherence Operator Quick Start](https://oracle.github.io/coherence-operator/docs/latest/#/docs/about/03_quickstart) documentation.
 
-* **Installing a Back-end**
+**Installing a Back-end**
 
 Create a namespace in Kubernetes called `sockshop`.
 
-    ```bash
-    $ kubectl create namespace sockshop
-    ```
+```bash
+kubectl create namespace sockshop
+```
 
 Install the back-end into the `sockshop` namespace.
 
-    ```bash
-    $ kubectl --namespace sockshop apply -k k8s/coherence 
-    ```
+```bash
+kubectl --namespace sockshop apply -k k8s/coherence
+```
 
 The `-k` parameter above will use `kubectl` with `kustomize` to merge all the files under the specified directory and
 create all Kubernetes resources defined by them, such as deployments and services for each microservice.
@@ -111,7 +111,7 @@ create all Kubernetes resources defined by them, such as deployments and service
 Install the `front-end` service by running the following command:
 
 ```bash
-$ kubectl apply -f k8s/optional/original-front-end.yaml --namespace sockshop
+kubectl apply -f k8s/optional/original-front-end.yaml --namespace sockshop
 ```
 
 Port-forward to the `front-end` UI using the following
@@ -119,7 +119,7 @@ Port-forward to the `front-end` UI using the following
 **Mac/Linux**
 
 ```bash
-$ kubectl port-forward --namespace sockshop service/front-end <localPort>:80
+kubectl port-forward --namespace sockshop service/front-end <localPort>:80
 ```
 
 **Windows**
@@ -138,8 +138,8 @@ browse order history, etc.
 Once you are finished, you can clean up the environment by executing the following:
 
 ```bash
-$ kubectl delete -f k8s/optional/original-front-end.yaml --namespace sockshop
-$ kubectl delete -k k8s/coherence --namespace sockshop
+kubectl delete -f k8s/optional/original-front-end.yaml --namespace sockshop
+kubectl delete -k k8s/coherence --namespace sockshop
 ```
 
 ### Scale Back-End
@@ -148,12 +148,12 @@ If you wish to scale the back-end you can issue the following command
 
 Scale only the orders microservice
 ```bash
-$ kubectl --namespace sockshop scale coherence orders --replicas=3
+kubectl --namespace sockshop scale coherence orders --replicas=3
 ```
 
 Or alternatively scale all the microservices
 ```bash
-$ for name in carts catalog orders payment shipping users
+for name in carts catalog orders payment shipping users
     do kubectl --namespace sockshop scale coherence $name --replicas=3
 done
 ```
