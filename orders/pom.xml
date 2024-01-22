@@ -82,7 +82,7 @@
 
     <groupId>com.oracle.coherence.examples.sockshop.micronaut</groupId>
     <artifactId>orders</artifactId>
-    <version>2.1.2-SNAPSHOT</version>
+    <version>2.1.2</version>
 
     <dependencies>
         <dependency>
