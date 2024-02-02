@@ -30,7 +30,7 @@
         <container.repo>ghcr.io/oracle/coherence-micronaut-sockshop</container.repo>
         <coherence.groupId>com.oracle.coherence.ce</coherence.groupId>
         <coherence.version>23.09.2</coherence.version>
-        <version.lib.lombok>1.18.24</version.lib.lombok>
+        <version.lib.lombok>1.18.30</version.lib.lombok>
         <version.lib.hamcrest>2.2</version.lib.hamcrest>
         <version.lib.rest-assured>5.3.1</version.lib.rest-assured>
         <version.lib.tracerresolver>0.1.8</version.lib.tracerresolver>
