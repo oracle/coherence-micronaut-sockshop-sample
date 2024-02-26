@@ -13,6 +13,14 @@ shell: bash
 
 steps:
   - type: Command
+    name: "Download and configure JDK 17"
+    command: |
+      wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/java/17/archive/jdk-17.0.10_linux-x64_bin.tar.gz
+      tar xzf jdk-17.0.10_linux-x64_bin.tar.gz
+      export JAVA_HOME=$PWD/jdk-17.0.10
+      export PATH=$JAVA_HOME/bin:$PATH
+
+  - type: Command
     name: "Run Maven cycloneDX plugin command"
     command: |
       # For more details, visit https://github.com/CycloneDX/cyclonedx-maven-plugin/blob/master/README.md
