@@ -24,6 +24,8 @@ steps:
       # For more details, visit https://github.com/CycloneDX/cyclonedx-maven-plugin/blob/master/README.md
       export JAVA_HOME=${OCI_PRIMARY_SOURCE_DIR}/jdk-17.0.10
       export PATH=$JAVA_HOME/bin:$PATH
+      echo `which java`
+      java -version
       mvn org.cyclonedx:cyclonedx-maven-plugin:2.7.9:makeAggregateBom -DincludeRuntimeScope=true -DincludeCompileScope=true -DincludeProvidedScope=false -DincludeSystemScope=false -DincludeTestScope=false -DoutputFormat=json -DoutputName=artifactSBOM -DschemaVersion=1.4
       mv target/artifactSBOM.json ${OCI_PRIMARY_SOURCE_DIR}/artifactSBOM.json
 outputArtifacts:
