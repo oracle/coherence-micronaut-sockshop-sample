@@ -318,8 +318,12 @@
                 <version>3.2.5</version>
                 <configuration>
                     <reuseForks>false</reuseForks>
+                    <forkNode implementation="org.apache.maven.plugin.surefire.extensions.SurefireForkNodeFactory"/>
                     <systemPropertyVariables>
                         <coherence.metrics.http.enabled>true</coherence.metrics.http.enabled>
+                        <coherence.wka>127.0.0.1</coherence.wka>
+                        <coherence.ttl>0</coherence.ttl>
+                        <coherence.cluster>sockshop</coherence.cluster>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
