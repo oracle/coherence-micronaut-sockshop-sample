@@ -199,6 +199,12 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>org.fusesource.jansi</groupId>
+            <artifactId>jansi</artifactId>
+            <version>2.4.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
             <version>3.0.2</version>
@@ -342,8 +348,12 @@
                 <version>3.2.5</version>
                 <configuration>
                     <reuseForks>false</reuseForks>
+                    <forkNode implementation="org.apache.maven.plugin.surefire.extensions.SurefireForkNodeFactory"/>
                     <systemPropertyVariables>
                         <coherence.metrics.http.enabled>true</coherence.metrics.http.enabled>
+                        <coherence.wka>127.0.0.1</coherence.wka>
+                        <coherence.ttl>0</coherence.ttl>
+                        <coherence.cluster>sockshop</coherence.cluster>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
