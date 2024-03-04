@@ -12,6 +12,8 @@ import io.micrometer.core.annotation.Timed;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 
+import io.micronaut.scheduling.TaskExecutors;
+import io.micronaut.scheduling.annotation.ExecuteOn;
 import io.micronaut.tracing.annotation.NewSpan;
 import lombok.extern.java.Log;
 
@@ -27,6 +29,7 @@ import java.util.Map;
  */
 @Controller("/orders")
 @Log
+@ExecuteOn(TaskExecutors.BLOCKING)
 public class OrderResource implements OrderApi {
     /**
      * Order repository to use.
