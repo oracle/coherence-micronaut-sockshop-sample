@@ -27,7 +27,7 @@ as the application framework, in case one of those is your framework of choice.
 * [Architecture](#architecture)
 * [Project Structure](#project-structure)
 * [Pre-Requisites](#pre-requisites)
-* [Quick Start](#quick-start)
+* [How to Run](#how-to-run)
 * [Complete Application Deployment](./doc/complete-application-deployment.md)
 * [Integrating with Oracle OCI Application Performance Monitoring (APM)](./doc/oracle-cloud-apm.md)
 * [Development](./doc/development.md)
@@ -70,7 +70,7 @@ contains Kubernetes deployment files for the whole application,
 top-level POM file which allows you to easily build the whole project and import it
 into your favorite IDE.
 
-## Quick Start
+## How to Run
 
 Kubernetes scripts depend on Kustomize, so make sure that you have a newer
 version of `kubectl` that supports it (at least 1.16 or above).
@@ -160,7 +160,7 @@ done
 
 ## Complete Application Deployment
 
-The Quick Start shows how you can run the application locally, but that may not
+The [How to Run](#how-to-run) above shows how you can run the application locally, but that may not
 be enough if you want to experiment by scaling individual services, look at tracing data in Jaeger,
 monitor services via Prometheus and Grafana, or make API calls directly via Swagger UI.
 
