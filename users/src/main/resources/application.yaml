@@ -50,3 +50,5 @@ coherence:
     enabled: false
   data:
     users:
+  tracing:
+    ratio: -1

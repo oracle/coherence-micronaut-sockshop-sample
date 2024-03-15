@@ -50,3 +50,5 @@ coherence:
     enabled: false
   proxy:
     enabled: false
+  tracing:
+    ratio: -1

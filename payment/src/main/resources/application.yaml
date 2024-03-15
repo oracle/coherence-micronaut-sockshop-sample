@@ -50,3 +50,5 @@ coherence:
     enabled: false
   data:
     payments:
+  tracing:
+    ratio: -1
