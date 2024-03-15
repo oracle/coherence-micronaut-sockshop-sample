@@ -47,3 +47,5 @@ tracing:
 coherence:
   data:
     shipments:
+  tracing:
+    ratio: -1
