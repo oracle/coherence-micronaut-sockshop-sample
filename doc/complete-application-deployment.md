@@ -33,7 +33,10 @@ which is not necessary), and performing a few additional steps.
    **IMPORTANT**
    If installing Prometheus into a RBAC enabled k8s cluster you may need to create the required RBAC resources
    as described in the [Prometheus RBAC](https://prometheus-operator.dev/docs/operator/rbac/) documentation.
-   
+
+   In some environments, installation can fail with the error message "path /sys is not shared or slave mount".
+   For this demo, if necessary, it will be sufficient to comment out `mountPropagation: HostToContainer` in the
+   `manifests/nodeExporter-daemonset.yaml` file.
 
    **IMPORTANT**
 
@@ -58,6 +61,16 @@ which is not necessary), and performing a few additional steps.
 
 > Note: This is assuming you have deployed the back-ends via the instructions in
 > the previous section.
+
+   > Note: This step can be skipped if one wants to access application and Grafana/Prometheus/Jaeger services
+   > just by using `localhost`.
+   > In that case add port forwarding setup for each service:
+   >```bash
+   > $ kubectl --namespace sockshop port-forward svc/front-end 8079:80
+   > $ kubectl --namespace monitoring port-forward svc/prometheus-k8s 9090
+   > $ kubectl --namespace monitoring port-forward svc/alertmanager-main 9093
+   > $ kubectl --namespace monitoring port-forward svc/grafana 3000
+   >```
 
 1. Create the Load Balancer
 
@@ -118,11 +131,17 @@ which is not necessary), and performing a few additional steps.
 
 1. Access the application
 
-   Access the application via the endpoint http://coherence.sockshop.mycompany.com/
+   Access the application via the endpoint http://coherence.sockshop.mycompany.com/ (or http://localhost:8079)
 
 ### Install the Jaeger Operator
 
 1. Install the Jaeger Operator
+
+   The Jaeger Operator requires `cert-manager` to be installed. If it's missing, `cert-manager`
+   can be installed with the following command:
+   ```bash
+   kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.2/cert-manager.yaml
+   ```
 
    The command below will create `monitoring` namespace and install Jaeger Operator into it.
    You only need to do this once, regardless of the number of backends you want to deploy.
@@ -141,8 +160,21 @@ which is not necessary), and performing a few additional steps.
     ```
    tracing:
       jaeger:
-         enabled: false
+         enabled: true
    ```
+
+   > Note: To access Jaeger UI over localhost add port forwarding setup:
+   > ```bash
+   > $ kubectl --namespace sockshop port-forward svc/jaeger-query 16686
+   >```
+
+   > Note: to view not just Sockshop traces but also Coherence traces
+   > edit `application.yaml` and set `coherence.tracing.ratio` to 1.
+   >```yaml
+   > coherence:
+   >   tracing:
+   >     ratio: 1
+   >```
 
 1. Exercise the Application and access Jaeger
 
