@@ -12,7 +12,7 @@ spec:
   cluster: SockShop
   role: Payment
   replicas: 1
-  image: ghcr.io/oracle/coherence-micronaut-sockshop-payment:latest
+  image: ghcr.io/oracle/coherence-micronaut-sockshop-payment2.2.0
   readinessProbe:
     initialDelaySeconds: 10
     periodSeconds: 10
