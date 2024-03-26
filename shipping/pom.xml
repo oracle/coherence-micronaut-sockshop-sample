@@ -37,7 +37,7 @@
         <version.lib.okhttp3>4.12.0</version.lib.okhttp3>
 
         <!-- overrides from micronaut-parent -->
-        <micronaut.coherence.version>5.0.1</micronaut.coherence.version>
+        <micronaut.coherence.version>5.0.2</micronaut.coherence.version>
     </properties>
 
     <repositories>
