@@ -35,6 +35,7 @@
         <version.lib.tracerresolver>0.1.8</version.lib.tracerresolver>
         <version.lib.logback>1.5.6</version.lib.logback>
         <version.lib.okhttp3>4.12.0</version.lib.okhttp3>
+        <version.lib.jackson>2.16.2</version.lib.jackson>
 
         <!-- micronaut-parent overrides -->
         <micronaut.coherence.version>5.0.1</micronaut.coherence.version>
@@ -231,6 +232,33 @@
             <groupId>io.opentracing.contrib</groupId>
             <artifactId>opentracing-tracerresolver</artifactId>
             <version>${version.lib.tracerresolver}</version>
+        </dependency>
+
+        <!-- force this version of dependency -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${version.lib.jackson}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${version.lib.jackson}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${version.lib.jackson}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${version.lib.jackson}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jdk8</artifactId>
+            <version>${version.lib.jackson}</version>
         </dependency>
     </dependencies>
 
