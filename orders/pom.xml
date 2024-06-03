@@ -25,7 +25,7 @@
         <jdk.version>17</jdk.version>
         <release.version>17</release.version>
         <micronaut.runtime>netty</micronaut.runtime>
-        <version.lib.bedrock>7.0.3</version.lib.bedrock>
+        <version.lib.bedrock>7.0.4</version.lib.bedrock>
         <exec.mainClass>com.oracle.coherence.examples.sockshop.micronaut.orders.Application</exec.mainClass>
         <container.repo>ghcr.io/oracle/coherence-micronaut-sockshop</container.repo>
         <coherence.groupId>com.oracle.coherence.ce</coherence.groupId>
