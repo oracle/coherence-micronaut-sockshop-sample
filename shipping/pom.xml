@@ -36,6 +36,7 @@
         <version.lib.logback>1.5.6</version.lib.logback>
         <version.lib.okhttp3>4.12.0</version.lib.okhttp3>
         <version.lib.jackson>2.17.1</version.lib.jackson>
+        <version.lib.netty>4.1.108.Final</version.lib.netty>
 
         <!-- overrides from micronaut-parent -->
         <micronaut.coherence.version>5.0.1</micronaut.coherence.version>
@@ -235,7 +236,7 @@
             <version>${version.lib.tracerresolver}</version>
         </dependency>
 
-        <!-- force this version of dependency -->
+        <!-- force these versions of dependencies -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -260,6 +261,11 @@
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jdk8</artifactId>
             <version>${version.lib.jackson}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-codec-http</artifactId>
+            <version>${version.lib.netty}</version>
         </dependency>
     </dependencies>
 
