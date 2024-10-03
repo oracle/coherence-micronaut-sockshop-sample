@@ -35,7 +35,7 @@
         <version.lib.tracerresolver>0.1.8</version.lib.tracerresolver>
         <version.lib.logback>1.5.8</version.lib.logback>
         <version.lib.okhttp3>4.12.0</version.lib.okhttp3>
-        <version.lib.jackson>2.17.2</version.lib.jackson>
+        <version.lib.jackson>2.18.0</version.lib.jackson>
         <version.lib.netty>4.1.113.Final</version.lib.netty>
 
         <!-- micronaut-parent overrides -->
