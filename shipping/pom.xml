@@ -303,16 +303,16 @@
                 <configuration>
                     <!-- Uncomment to enable incremental compilation -->
                     <!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>io.micronaut.coherence</groupId>
-                            <artifactId>micronaut-coherence-data</artifactId>
-                            <version>${micronaut.coherence.version}</version>
-                        </path>
+                    <annotationProcessorPaths combine.self="override">
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                             <version>${version.lib.lombok}</version>
+                        </path>
+                        <path>
+                            <groupId>io.micronaut.coherence</groupId>
+                            <artifactId>micronaut-coherence-data</artifactId>
+                            <version>${micronaut.coherence.version}</version>
                         </path>
                         <path>
                             <groupId>io.micronaut.openapi</groupId>
