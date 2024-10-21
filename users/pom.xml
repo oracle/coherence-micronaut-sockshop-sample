@@ -31,7 +31,7 @@
         <coherence.version>24.09</coherence.version>
         <version.lib.lombok>1.18.34</version.lib.lombok>
         <version.lib.hamcrest>2.2</version.lib.hamcrest>
-        <version.lib.protobuf-java>3.25.5</version.lib.protobuf-java>
+        <version.lib.protobuf-java>4.28.2</version.lib.protobuf-java>
         <version.lib.rest-assured>5.5.0</version.lib.rest-assured>
         <version.lib.tracerresolver>0.1.8</version.lib.tracerresolver>
         <version.lib.logback>1.5.10</version.lib.logback>
