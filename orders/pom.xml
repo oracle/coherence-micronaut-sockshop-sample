@@ -35,7 +35,7 @@
         <version.lib.protobuf-java>4.29.1</version.lib.protobuf-java>
         <version.lib.rest-assured>5.5.0</version.lib.rest-assured>
         <version.lib.tracerresolver>0.1.8</version.lib.tracerresolver>
-        <version.lib.logback>1.5.12</version.lib.logback>
+        <version.lib.logback>1.5.15</version.lib.logback>
         <version.lib.okhttp3>4.12.0</version.lib.okhttp3>
         <version.lib.jackson>2.18.2</version.lib.jackson>
         <version.lib.netty>4.1.115.Final</version.lib.netty>
