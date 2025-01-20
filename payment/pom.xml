@@ -37,7 +37,7 @@
         <version.lib.logback>1.5.16</version.lib.logback>
         <version.lib.okhttp3>4.12.0</version.lib.okhttp3>
         <version.lib.jackson>2.18.2</version.lib.jackson>
-        <version.lib.netty>4.1.116.Final</version.lib.netty>
+        <version.lib.netty>4.1.117.Final</version.lib.netty>
 
         <!-- micronaut-parent overrides -->
         <micronaut.coherence.version>5.0.4</micronaut.coherence.version>
