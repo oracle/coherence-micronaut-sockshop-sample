@@ -40,7 +40,7 @@
         <version.lib.netty>4.1.119.Final</version.lib.netty>
 
         <!-- overrides from micronaut-parent -->
-        <micronaut.coherence.version>5.0.4</micronaut.coherence.version>
+        <micronaut.coherence.version>5.0.5</micronaut.coherence.version>
     </properties>
 
     <repositories>
