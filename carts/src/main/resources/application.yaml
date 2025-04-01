@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2021, 2023 Oracle and/or its affiliates.
+# Copyright (c) 2021, 2025, Oracle and/or its affiliates.
 #
 # Licensed under the Universal Permissive License v 1.0 as shown at
 # https://oss.oracle.com/licenses/upl.
@@ -27,22 +27,6 @@ jackson:
 endpoints:
   prometheus:
     sensitive: false
-tracing:
-  jaeger:
-    enabled: false
-    sampler:
-      probability: 1
-    sender:
-      agentHost: jaeger-agent
-      agentPort: 5775
-  zipkin:
-    enabled: false
-    sampler:
-      probability: 1
-    http:
-      url: http://localhost:9411
-      path:
-    supportsJoin: false
 coherence:
   data:
     carts:
@@ -51,4 +35,10 @@ coherence:
   proxy:
     enabled: false
   tracing:
-    ratio: -1
+    ratio: 1
+otel:
+  traces:
+    exporter: otlp
+  exporter:
+    otlp:
+      endpoint: http://jaeger-inmemory-instance-collector:4317

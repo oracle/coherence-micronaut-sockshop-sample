@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2021 Oracle and/or its affiliates.
+# Copyright (c) 2021, 2025, Oracle and/or its affiliates.
 #
 # Licensed under the Universal Permissive License v 1.0 as shown at
 # https://oss.oracle.com/licenses/upl.
@@ -12,17 +12,11 @@ spec:
   cluster: SockShop
   role: Payment
   replicas: 1
-  image: ghcr.io/oracle/coherence-micronaut-sockshop-payment:latest
+  image: ghcr.io/oracle/coherence-micronaut-sockshop-payment:2.2.2-SNAPSHOT
   readinessProbe:
     initialDelaySeconds: 10
     periodSeconds: 10
   env:
-    - name: TRACING_HOST
-      value: "jaeger-collector"
-    - name: JAEGER_SAMPLER_TYPE
-      value: "const"
-    - name: JAEGER_SAMPLER_PARAM
-      value: "1"
     - name: COHERENCE_SERVICE_NAME
       value: "Payment"
   application:
@@ -30,6 +24,15 @@ spec:
   jvm:
     memory:
       heapSize: 2g
+    args:
+      - "-Dotel.java.global-autoconfigure.enabled=true"
+      - "-Dotel.service.name=payment"
+      - "-Dotel.metrics.exporter=none"
+      - "-Dotel.logs.exporter=none"
+      - "-Dotel.traces.exporter=otlp"
+      - "-Dotel.exporter.otlp.traces.endpoint=http://jaeger-inmemory-instance-collector:4317"
+      - "-Dotel.sdk.disabled=true"
+      - "-Dcoherence.tracing.ratio=-1"
   coherence:
     metrics:
       enabled: true
