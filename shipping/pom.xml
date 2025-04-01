@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright (c) 2021, 2023 Oracle and/or its affiliates.
+  Copyright (c) 2021, 2025, Oracle and/or its affiliates.
 
   Licensed under the Universal Permissive License v 1.0 as shown at
   https://oss.oracle.com/licenses/upl.
@@ -35,7 +35,6 @@
         <version.lib.rest-assured>5.5.1</version.lib.rest-assured>
         <version.lib.tracerresolver>0.1.8</version.lib.tracerresolver>
         <version.lib.logback>1.5.18</version.lib.logback>
-        <version.lib.okhttp3>4.12.0</version.lib.okhttp3>
         <version.lib.jackson>2.18.3</version.lib.jackson>
         <version.lib.netty>4.1.119.Final</version.lib.netty>
 
@@ -228,16 +227,20 @@
 
         <dependency>
             <groupId>io.micronaut.tracing</groupId>
-            <artifactId>micronaut-tracing-jaeger</artifactId>
+            <artifactId>micronaut-tracing-opentelemetry-annotation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-exporter-otlp</artifactId>
         </dependency>
         <dependency>
             <groupId>io.micronaut.tracing</groupId>
-            <artifactId>micronaut-tracing-brave-http</artifactId>
+            <artifactId>micronaut-tracing-opentelemetry-http</artifactId>
         </dependency>
+        <!-- kotlin dependency required for okhttp otel sender -->
         <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>${version.lib.okhttp3}</version>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
         </dependency>
 
         <!-- TODO Needs to be removed -->
@@ -325,6 +328,11 @@
                             <groupId>io.micronaut.coherence</groupId>
                             <artifactId>micronaut-coherence-data</artifactId>
                             <version>${micronaut.coherence.version}</version>
+                        </path>
+                        <path>
+                            <groupId>io.micronaut.tracing</groupId>
+                            <artifactId>micronaut-tracing-opentelemetry-annotation</artifactId>
+                            <version>${micronaut.tracing.version}</version>
                         </path>
                         <path>
                             <groupId>io.micronaut.openapi</groupId>
