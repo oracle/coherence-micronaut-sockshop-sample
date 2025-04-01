@@ -95,7 +95,7 @@
 
     <groupId>com.oracle.coherence.examples.sockshop.micronaut</groupId>
     <artifactId>payment</artifactId>
-    <version>2.2.2-SNAPSHOT</version>
+    <version>2.3.1-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
