@@ -29,7 +29,7 @@
         <container.repo>ghcr.io/oracle/coherence-micronaut-sockshop</container.repo>
         <coherence.groupId>com.oracle.coherence.ce</coherence.groupId>
         <coherence.version>25.03</coherence.version>
-        <version.lib.lombok>1.18.36</version.lib.lombok>
+        <version.lib.lombok>1.18.38</version.lib.lombok>
         <version.lib.hamcrest>2.2</version.lib.hamcrest>
         <version.lib.protobuf-java>4.30.2</version.lib.protobuf-java>
         <version.lib.rest-assured>5.5.1</version.lib.rest-assured>
