@@ -17,12 +17,6 @@ spec:
     initialDelaySeconds: 10
     periodSeconds: 10
   env:
-    - name: TRACING_HOST
-      value: "jaeger-collector"
-    - name: JAEGER_SAMPLER_TYPE
-      value: "const"
-    - name: JAEGER_SAMPLER_PARAM
-      value: "1"
     - name: COHERENCE_SERVICE_NAME
       value: "Orders"
   application:
@@ -30,15 +24,6 @@ spec:
   jvm:
     memory:
       heapSize: 2g
-    args:
-      - "-Dotel.java.global-autoconfigure.enabled=true"
-      - "-Dotel.service.name=orders"
-      - "-Dotel.metrics.exporter=none"
-      - "-Dotel.logs.exporter=none"
-      - "-Dotel.traces.exporter=otlp"
-      - "-Dotel.exporter.otlp.traces.endpoint=http://jaeger-inmemory-instance-collector:4317"
-      - "-Dotel.sdk.disabled=true"
-      - "-Dcoherence.tracing.ratio=-1"
   coherence:
     metrics:
       enabled: true
