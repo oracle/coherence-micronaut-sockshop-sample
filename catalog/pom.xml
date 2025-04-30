@@ -28,7 +28,7 @@
         <exec.mainClass>com.oracle.coherence.examples.sockshop.micronaut.catalog.Application</exec.mainClass>
         <container.repo>ghcr.io/oracle/coherence-micronaut-sockshop</container.repo>
         <coherence.groupId>com.oracle.coherence.ce</coherence.groupId>
-        <coherence.version>25.03</coherence.version>
+        <coherence.version>25.03.1</coherence.version>
         <version.lib.lombok>1.18.38</version.lib.lombok>
         <version.lib.hamcrest>2.2</version.lib.hamcrest>
         <version.lib.protobuf-java>4.30.2</version.lib.protobuf-java>
