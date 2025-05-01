@@ -95,7 +95,7 @@
 
     <groupId>com.oracle.coherence.examples.sockshop.micronaut</groupId>
     <artifactId>shipping</artifactId>
-    <version>2.3.1-SNAPSHOT</version>
+    <version>2.3.1</version>
 
     <dependencies>
         <dependency>
