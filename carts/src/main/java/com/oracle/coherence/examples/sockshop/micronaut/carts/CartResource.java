@@ -25,6 +25,7 @@ public class CartResource implements CartApi {
     private CartRepository carts;
 
     @Override
+    @NewSpan("get-cart")
     public Cart getCart(String customerId) {
         return carts.getOrCreateCart(customerId);
     }

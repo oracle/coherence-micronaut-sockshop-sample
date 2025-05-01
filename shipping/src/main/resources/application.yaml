@@ -31,9 +31,13 @@ endpoints:
 coherence:
   data:
     shipments:
+  tracing:
+    ratio: -1
 otel:
+  sdk:
+    disabled: true
   traces:
     exporter: otlp
   exporter:
     otlp:
-      endpoint: http://localhost:4317
+      endpoint: http://jaeger-inmemory-instance-collector:4317
