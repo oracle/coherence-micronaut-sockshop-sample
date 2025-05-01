@@ -13,7 +13,7 @@
     <parent>
         <groupId>io.micronaut.platform</groupId>
         <artifactId>micronaut-parent</artifactId>
-        <version>4.8.0</version>
+        <version>4.8.2</version>
         <relativePath/>
     </parent>
 
@@ -29,7 +29,7 @@
         <exec.mainClass>com.oracle.coherence.examples.sockshop.micronaut.orders.Application</exec.mainClass>
         <container.repo>ghcr.io/oracle/coherence-micronaut-sockshop</container.repo>
         <coherence.groupId>com.oracle.coherence.ce</coherence.groupId>
-        <coherence.version>25.03</coherence.version>
+        <coherence.version>25.03.1</coherence.version>
         <version.lib.lombok>1.18.38</version.lib.lombok>
         <version.lib.hamcrest>2.2</version.lib.hamcrest>
         <version.lib.protobuf-java>4.30.2</version.lib.protobuf-java>
@@ -37,11 +37,11 @@
         <version.lib.tracerresolver>0.1.8</version.lib.tracerresolver>
         <version.lib.logback>1.5.18</version.lib.logback>
         <version.lib.okhttp3>4.12.0</version.lib.okhttp3>
-        <version.lib.jackson>2.18.3</version.lib.jackson>
+        <version.lib.jackson>2.19.0</version.lib.jackson>
         <version.lib.netty>4.2.0.Final</version.lib.netty>
 
         <!-- micronaut-parent overrides -->
-        <micronaut.coherence.version>5.0.5</micronaut.coherence.version>
+        <micronaut.coherence.version>5.0.6</micronaut.coherence.version>
     </properties>
 
     <repositories>
@@ -230,7 +230,7 @@
         <dependency>
             <groupId>org.fusesource.jansi</groupId>
             <artifactId>jansi</artifactId>
-            <version>2.4.1</version>
+            <version>2.4.2</version>
             <scope>test</scope>
         </dependency>
 
